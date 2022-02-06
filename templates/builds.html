@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=<device-width>, initial-scale=1.0">
+    <link rel="stylesheet" href="/static/css/bloop.css">
+    <script src="/static/scripts/bloop.js"></script>
+    <title>Artifacts</title>
+</head>
+
+<body>
+    <h1>Artifacts</h1>
+    <br>
+    <br>
+    <br>
+    <input type = "text" id = "search-query" placeholder="Search for platform" oninput="search()"/>
+    {% for artifact in artifacts %} 
+    
+    {% if artifact.is_successful %}
+        <button class = "search-item"><a href= "/build/{{artifact.identifier}}/{{artifact.commit}}/{{artifact.platform}}"><span class="success">{{artifact.platform}}</span></a></button>
+    {% else %}
+        <button class = "search-item" disabled><span class="failure">{{artifact.platform}}</span></button>
+    {% endif %} 
+
+    {% endfor %}
+</body>
+
+</html>
